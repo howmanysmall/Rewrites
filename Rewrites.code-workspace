@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"lualinter.interpreter": "luajit",
+		"lualinter.warnOnSave": true,
+		"lua.targetVersion": "5.1"
+	}
+}
