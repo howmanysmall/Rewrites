@@ -7827,9 +7827,10 @@ required = false
 
 [[table.pack.args]]
 type = "any"
+required = true
 [[table.pack.args]]
 type = "..."
-required = "additional values go here"
+required = false
 
 [[delay.args]]
 type = "number"
