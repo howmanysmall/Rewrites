@@ -116,7 +116,10 @@ return function()
 
 		for Index = 1, StringLength do
 			local Character = string.sub(String, Index, Index)
-			assert(BASE_64_DICTIONARY[Character], string.format(BAD_CHARACTER, Character, String, Index))
+			assert(
+				BASE_64_DICTIONARY[Character],
+				string.format(BAD_CHARACTER, Character, String, Index)
+			)
 		end
 	end
 

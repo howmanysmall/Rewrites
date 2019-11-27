@@ -232,7 +232,6 @@ local function CharacterAddedFenv(Player)
 			BindableEvent:Destroy()
 		end
 
---		if Player.Character ~= Character or not Character.Parent then return end
 		if not (Player.Character ~= Character or not Character.Parent) then
 			local Humanoid = Character:FindFirstChildOfClass("Humanoid")
 
@@ -243,7 +242,6 @@ local function CharacterAddedFenv(Player)
 				Humanoid = Character:FindFirstChildOfClass("Humanoid")
 			end
 
---			if Player.Character ~= Character or not Character:IsDescendantOf(game) then return end
 			if not (Player.Character ~= Character or not Character:IsDescendantOf(game)) then
 				local RootPart = Character:FindFirstChild("HumanoidRootPart")
 

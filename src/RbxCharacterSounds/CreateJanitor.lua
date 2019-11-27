@@ -2,6 +2,9 @@
 -- @documentation https://rostrap.github.io/Libraries/Events/Janitor/
 -- @author Validark
 
+local RunService = game:GetService("RunService")
+local Heartbeat = RunService.Heartbeat
+
 local LinkToInstanceIndex = newproxy(false)
 local Janitors = setmetatable({}, {__mode = "k"})
 
@@ -13,7 +16,9 @@ local TypeDefaults = {
 }
 
 local BindableEvent = Instance.new("BindableEvent")
-BindableEvent.Event:Connect(function(Function, Arguments) Function(Arguments()) end)
+BindableEvent.Event:Connect(function(Function, Arguments)
+	Function(Arguments())
+end)
 
 local function FastSpawn(Function, ...)
 	local Arguments = table.pack(...)
@@ -23,6 +28,13 @@ local function FastSpawn(Function, ...)
 end
 
 local next = next
+
+local function Wait(YieldTime)
+	local GoalTime = tick() + YieldTime
+	while tick() <= GoalTime do
+		Heartbeat:Wait()
+	end
+end
 
 function Janitor.new()
 	return setmetatable({CurrentlyCleaning = false}, Janitor)
@@ -130,7 +142,7 @@ function Janitor.__index:LinkToInstance(Object, AllowMultiple)
 			return self:Cleanup()
 		elseif Obj == Reference.Value and not Par then
 			Obj = nil
-			wait()
+			Wait()
 
 			if (not Reference.Value or not Reference.Value.Parent) and ManualDisconnect.Connected then
 				if not Connection.Connected then
@@ -138,7 +150,7 @@ function Janitor.__index:LinkToInstance(Object, AllowMultiple)
 					return self:Cleanup()
 				else
 					while true do
-						wait(0.2)
+						Wait(0.2)
 						if not ManualDisconnect.Connected then
 							return
 						elseif not Connection.Connected then

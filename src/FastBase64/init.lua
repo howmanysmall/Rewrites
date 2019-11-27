@@ -26,9 +26,9 @@ end
 
 local Base64 = {}
 
-local bit32_rshift = bit32.rshift
-local bit32_lshift = bit32.lshift
 local bit32_band = bit32.band
+local bit32_lshift = bit32.lshift
+local bit32_rshift = bit32.rshift
 local t_string = t.string
 
 --[[**

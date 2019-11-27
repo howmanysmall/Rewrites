@@ -7816,6 +7816,13 @@ removed = true
 [debug.setupvalue]
 removed = true
 
+[[setmetatable.args]]
+type = "table"
+required = true
+[[setmetatable.args]]
+type = "any"
+required = true
+
 [[table.unpack.args]]
 type = "table"
 [[table.unpack.args]]
@@ -7837,6 +7844,22 @@ type = "number"
 required = true
 [[table.create.args]]
 type = "any"
+required = false
+
+[[table.move.args]]
+type = "table"
+required = true
+[[table.move.args]]
+type = "number"
+required = true
+[[table.move.args]]
+type = "number"
+required = true
+[[table.move.args]]
+type = "number"
+required = true
+[[table.move.args]]
+type = "table"
 required = false
 
 [[delay.args]]
@@ -7878,6 +7901,10 @@ required = false
 type = "number"
 [[math.sign.args]]
 type = "number"
+
+[[string.reverse.args]]
+required = true
+type = "string"
 
 [module]
 removed = true
