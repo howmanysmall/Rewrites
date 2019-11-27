@@ -5,10 +5,10 @@ local t = require(script.Parent.t)
 local Heartbeat = RunService.Heartbeat
 
 local Timer = {
-	ClassName = "Timer";
+	ClassName = "Timer",
 	__tostring = function()
 		return "Timer"
-	end;
+	end,
 }
 
 Timer.__index = Timer
@@ -17,10 +17,10 @@ function Timer.new(duration)
 	assert(t.numberPositive(duration))
 
 	return setmetatable({
-		_isRunning = true;
-		_startTime = tick();
-		_duration = duration;
-		_timerEvent = BindableEvent.new();
+		_isRunning = true,
+		_startTime = tick(),
+		_duration = duration,
+		_timerEvent = BindableEvent.new(),
 	}, Timer)
 end
 

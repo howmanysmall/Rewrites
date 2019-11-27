@@ -42,6 +42,7 @@ local Lerps = setmetatable({
 		local N0, D do
 			local Sign0, H0, M0, S0 = string.match(V0, "^([+-]?)(%d*):[+-]?(%d*):[+-]?(%d*)$")
 			local Sign1, H1, M1, S1 = string.match(V1, "^([+-]?)(%d*):[+-]?(%d*):[+-]?(%d*)$")
+
 			if Sign0 and Sign1 then
 				N0 = 3600 * (tonumber(H0) or 0) + 60 * (tonumber(M0) or 0) + (tonumber(S0) or 0)
 				local N1 = 3600 * (tonumber(H1) or 0) + 60 * (tonumber(M1) or 0) + (tonumber(S1) or 0)
@@ -65,6 +66,7 @@ local Lerps = setmetatable({
 			return function(DeltaTime)
 				local FS = (N0 + D * DeltaTime) % 86400
 				local S = FS >= 0 and FS or 0 - FS
+
 				return string.format(
 					FS < 0 and "-%.2u:%.2u:%.2u" or "%.2u:%.2u:%.2u",
 					(S - S % 3600) / 3600,
@@ -154,7 +156,10 @@ local Lerps = setmetatable({
 		local DeltaMin, DeltaMax = V1.Min - Min0, V1.Max - Max0
 
 		return function(DeltaTime)
-			return NumberRange.new(Min0 + DeltaTime * DeltaMin, Max0 + DeltaTime * DeltaMax)
+			return NumberRange.new(
+				Min0 + DeltaTime * DeltaMin,
+				Max0 + DeltaTime * DeltaMax
+			)
 		end
 	end;
 
@@ -163,7 +168,11 @@ local Lerps = setmetatable({
 		local DT, DV, DE = V1.Time - T0, V1.Value - V0, V1.Envelope - E0
 
 		return function(DeltaTime)
-			return NumberSequenceKeypoint.new(T0 + DeltaTime * DT, V0 + DeltaTime * DV, E0 + DeltaTime * DE)
+			return NumberSequenceKeypoint.new(
+				T0 + DeltaTime * DT,
+				V0 + DeltaTime * DV,
+				E0 + DeltaTime * DE
+			)
 		end
 	end;
 
@@ -194,8 +203,14 @@ local Lerps = setmetatable({
 
 		return function(DeltaTime)
 			return Ray.new(
-				Vector3.new(OX0 + DeltaTime * DOX, OY0 + DeltaTime * DOY, OZ0 + DeltaTime * DOZ),
-				Vector3.new(DX0 + DeltaTime * DDX, DY0 + DeltaTime * DDY, DZ0 + DeltaTime * DDZ)
+				Vector3.new(
+					OX0 + DeltaTime * DOX,
+					OY0 + DeltaTime * DOY, OZ0 + DeltaTime * DOZ
+				),
+				Vector3.new(
+					DX0 + DeltaTime * DDX,
+					DY0 + DeltaTime * DDY, DZ0 + DeltaTime * DDZ
+				)
 			)
 		end
 	end;
@@ -215,8 +230,10 @@ local Lerps = setmetatable({
 	Rect = function(V0, V1)
 		return function(DeltaTime)
 			return Rect.new(
-				V0.Min.X + DeltaTime * (V1.Min.X - V0.Min.X), V0.Min.Y + DeltaTime * (V1.Min.Y - V0.Min.Y),
-				V0.Max.X + DeltaTime * (V1.Max.X - V0.Max.X), V0.Max.Y + DeltaTime * (V1.Max.Y - V0.Max.Y)
+				V0.Min.X + DeltaTime * (V1.Min.X - V0.Min.X),
+				V0.Min.Y + DeltaTime * (V1.Min.Y - V0.Min.Y),
+				V0.Max.X + DeltaTime * (V1.Max.X - V0.Max.X),
+				V0.Max.Y + DeltaTime * (V1.Max.Y - V0.Max.Y)
 			)
 		end
 	end;
@@ -234,8 +251,16 @@ local Lerps = setmetatable({
 			local imaxz = imax.Z
 
 			return Region3.new(
-				Vector3.new(iminx < imaxx and iminx or imaxx, iminy < imaxy and iminy or imaxy, iminz < imaxz and iminz or imaxz),
-				Vector3.new(iminx > imaxx and iminx or imaxx, iminy > imaxy and iminy or imaxy, iminz > imaxz and iminz or imaxz)
+				Vector3.new(
+					iminx < imaxx and iminx or imaxx,
+					iminy < imaxy and iminy or imaxy,
+					iminz < imaxz and iminz or imaxz
+				),
+				Vector3.new(
+					iminx > imaxx and iminx or imaxx,
+					iminy > imaxy and iminy or imaxy,
+					iminz > imaxz and iminz or imaxz
+				)
 			)
 		end
 	end;

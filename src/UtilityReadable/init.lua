@@ -339,7 +339,7 @@ function Utility.indexOfTable(table, element)
 	assert(t.table(table))
 	assert(t.any(element))
 
-	for index, value in next, table do
+	for index, value in pairs(table) do
 		if value == element then
 			return index
 		end

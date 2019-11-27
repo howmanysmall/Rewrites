@@ -1,8 +1,8 @@
 local BindableEvent = {
-	ClassName = "BindableEvent";
+	ClassName = "BindableEvent",
 	__tostring = function()
 		return "BindableEvent"
-	end;
+	end,
 }
 
 BindableEvent.__index = BindableEvent

@@ -52,8 +52,7 @@ local function Bezier(X1, Y1, X2, Y2)
 					GuessT = GuessForT
 				end
 
-				local CurrentX = ((((1 - 3 * X2 + 3 * X1) * GuessForT + (3 * X2 - 6 * X1)) * GuessForT + (3 * X1)) * GuessForT) - T
-				GuessForT = GuessForT - CurrentX / CurrentSlope
+				GuessForT = GuessForT - (((((1 - 3 * X2 + 3 * X1) * GuessForT + (3 * X2 - 6 * X1)) * GuessForT + (3 * X1)) * GuessForT) - T) / CurrentSlope
 			end
 
 			GuessT = GuessForT
