@@ -51,10 +51,13 @@ function Base64.Encode(Input)
 
 		Length = Length + 1
 		Output[Length] = Alphabet[A + 1]
+
 		Length = Length + 1
 		Output[Length] = Alphabet[B + 1]
+
 		Length = Length + 1
 		Output[Length] = C2 and Alphabet[C + 1] or 61
+
 		Length = Length + 1
 		Output[Length] = C3 and Alphabet[D + 1] or 61
 	end

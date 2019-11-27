@@ -7832,6 +7832,13 @@ required = true
 type = "..."
 required = false
 
+[[table.create.args]]
+type = "number"
+required = true
+[[table.create.args]]
+type = "any"
+required = false
+
 [[delay.args]]
 type = "number"
 [[delay.args]]
