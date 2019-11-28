@@ -25,7 +25,7 @@ function RateLimiter.Get(id, rate, window_size)
 
 	self.window_size = RateLimitTable[id].window_size
 	self.rate = RateLimitTable[id].rate
-	return self	
+	return self
 end
 
 function RateLimiter:Window()

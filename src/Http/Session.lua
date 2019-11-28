@@ -43,7 +43,6 @@ function Session:DisableRateLimit()
 
 	if self._ratelimit then
 		RateLimitTable:Free(self._ratelimit.id)
---		RateLimitTable[self._ratelimit.id] = nil
 		self._ratelimit = nil
 	end
 end
