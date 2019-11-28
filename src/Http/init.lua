@@ -4,7 +4,7 @@
 -- Original: https://github.com/jpatrickdill/roblox-requests
 -- Documentation: https://jpatrickdill.github.io/roblox-requests/
 
--- Updated the original to use UpperPascalCase.
+-- Updated the original to use UpperPascalCase by HowManySmall.
 
 -- API --
 local Request = require(script.Request)
@@ -26,7 +26,7 @@ local Http = {
 	Utility = Utility;
 }
 
-function Http.Send(method, url, opts)
+function Http.Send(Method, Url, Options)
 	-- quick method to send http requests
 	--  method: (str) HTTP Method
 	--	 url: (str) Fully qualified URL
@@ -37,22 +37,22 @@ function Http.Send(method, url, opts)
 		--	 log: (bool) Whether to log the request
 		-- cookies: (CookieJar OR dict) Cookies to use in request
 
-	opts = opts or {}
-	return Request.new(method, url, opts):Send()
+	Options = Options or {}
+	return Request.new(Method, Url, Options):Send()
 end
 
 -- create quick functions for each http method
-for _, method in ipairs{"GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "PATCH"} do
-	Http[StringPlus_TitleCase(method)] = function(url, opts)
-		return Http.Send(method, url, opts)
+for _, Method in ipairs{"GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "PATCH"} do
+	Http[StringPlus_TitleCase(Method)] = function(Url, Options)
+		return Http.Send(Method, Url, Options)
 	end
 end
 
-function Http.SetRateLimit(requests, period)
+function Http.SetRateLimit(Requests, Period)
 	-- sets rate limit settings
-	local rl = RateLimiter.Get("http", requests, period)
+	local RateLimit = RateLimiter.Get("http", Requests, Period)
 
-	print("[Http] RateLimiter settings changed: ", rl.rate, "reqs /", rl.window_size, "secs")
+	print("[Http] RateLimiter settings changed: ", RateLimit.rate, "reqs /", RateLimit.window_size, "secs")
 end
 
 return Http
