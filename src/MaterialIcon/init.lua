@@ -65,12 +65,12 @@ local function CreateIcon(Properties)
 	IconImage.BackgroundTransparency = 1
 	IconImage.ImageRectSize = Vector2.new(Variant.Size, Variant.Size)
 	IconImage.ImageRectOffset = Vector2.new(Variant.X, Variant.Y)
-	IconImage.ImageColor3 = Properties.IconColor3
-	IconImage.ImageTransparency = Properties.IconTransparency
-	IconImage.Size = Properties.Size
-	IconImage.Position = Properties.Position
-	IconImage.AnchorPoint = Properties.AnchorPoint
-	IconImage.ZIndex = Properties.ZIndex
+	IconImage.ImageColor3 = Properties.IconColor3 or Color3.new(1, 1, 1)
+	IconImage.ImageTransparency = Properties.IconTransparency or 0
+	IconImage.Size = Properties.Size or UDim2.fromOffset(10, 10)
+	IconImage.Position = Properties.Position or UDim2.new()
+	IconImage.AnchorPoint = Properties.AnchorPoint or Vector2.new()
+	IconImage.ZIndex = Properties.ZIndex or 1
 
 	return IconImage
 end
