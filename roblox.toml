@@ -7832,6 +7832,14 @@ required = false
 type = "number"
 required = false
 
+[[table.find.args]]
+type = "table"
+[[table.find.args]]
+type = "any"
+[[table.find.args]]
+type = "number"
+required = false
+
 [[table.pack.args]]
 type = "any"
 required = true
