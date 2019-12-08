@@ -1,5 +1,6 @@
 local Spritesheet = require(script.MaterialSpritesheet)
 
+-- These are pixel fixed.
 local SHEET_ASSETS = {
 	"rbxassetid://3926305904";
 	"rbxassetid://3926307971";
