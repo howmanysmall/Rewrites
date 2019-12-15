@@ -55,10 +55,10 @@ local FastCast = {
 FastCast.__index = FastCast
 
 -- Format params: methodName, ctorName
-local ERR_NOT_INSTANCE = "Cannot statically invoke method '%s' - It is an instance method. Call it on an instance of this class created via %s"
+local ERR_NOT_INSTANCE = "Cannot statically invoke method %q - It is an instance method. Call it on an instance of this class created via %s"
 
 -- Format params: paramName, expectedType, actualType
-local ERR_INVALID_TYPE = "Invalid type for parameter '%s' (Expected %s, got %s)"
+local ERR_INVALID_TYPE = "Invalid type for parameter %q (Expected %s, got %s)"
 
 
 -----------------------------------------------------------
